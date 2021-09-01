@@ -10,13 +10,13 @@ def get(endpoint: str, auth: str = None) -> str:
     return requests.get(endpoint, headers=headers).text
 
 
-def post(endpoint: str, auth: str, content_type: str='application/json') -> str:
+def post(data: str, endpoint: str, auth: str = None, content_type: str='application/json') -> str:
     headers = {'Content-Type': content_type}
 
     if auth is not None:
         headers['Authorization'] = auth
 
-    return requests.get(endpoint, headers=headers).text
+    return requests.post(endpoint, data=data, headers=headers).text
 
 def delete():
     pass
