@@ -5,7 +5,7 @@ def get(endpoint: str, auth: str = None) -> str:
     headers = {}
 
     if auth is not None:
-        headers = {'Authorization': auth}
+        headers['Authorization'] = auth
 
     return requests.get(endpoint, headers=headers).text
 
