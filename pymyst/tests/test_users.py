@@ -1,14 +1,14 @@
-import requests
+from pymyst.types.User import User
 
-def test_get_user():
+def test_get_response():
     user = User('codemyst')
     response = user.data()
 
     assert isinstance(response, dict)
-    assert user['name'] == 'CodeMyst'
-    assert user['id'] == 'bcfu7961'
-    assert user['lang'] == 'D'
-    assert user['is_contributer'] == True
-    assert user['avatar_url'] ==  'https://avatars3.githubusercontent.com/u/7966628?v=4'
-    assert user['is_public_profile'] == True
-
+    assert response['username'] == 'CodeMyst'
+    assert response['contributor'] == True
+    assert response['_id'] == 'bcfu7961'
+    assert response['defaultLang'] == 'D'
+    assert response['avatarUrl'] ==  'https://avatars3.githubusercontent.com/u/7966628?v=4'
+    assert response['publicProfile'] == True
+    assert response['supporterLength'] == 0
