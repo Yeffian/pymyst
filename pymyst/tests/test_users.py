@@ -1,7 +1,14 @@
 import requests
 
 def test_get_user():
-    # refactor all this....
-    response = requests.get('https://paste.myst.rs/api/v2/user/tsujin/exists')
+    user = User('codemyst')
+    response = user.data()
 
-    assert response.status_code == 200
+    assert isinstance(response, dict)
+    assert user.name == 'CodeMyst'
+    assert user.id == 'bcfu7961'
+    assert user.lang == 'D'
+    assert user.is_contributer == True
+    assert user.avatar_url ==  'https://avatars3.githubusercontent.com/u/7966628?v=4'
+    assert user.is_public_profile == True
+
