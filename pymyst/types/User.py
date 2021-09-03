@@ -6,7 +6,7 @@ class User:
         self.data = None
 
     @classmethod
-    def get_from_name(cls, username: str) -> dict:
+    def get_from_username(cls, username: str) -> dict:
         response = requests.get(f'https://paste.myst.rs/api/v2/user/{username}')
 
         return response.json()
