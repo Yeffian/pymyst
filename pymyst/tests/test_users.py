@@ -2,9 +2,20 @@ from pymyst.types.User import User
 
 
 def test_get_from_name() -> None:
-    response = User.get_from_name('CodeMyst')
+    user = User.get_from_username('CodeMyst')
+
+    response = user.data
 
     assert isinstance(response, dict)
+
+    assert isinstance(response['username'], str)
+    assert isinstance(response['contributor'], bool)
+    assert isinstance(response['_id'], str)
+    assert isinstance(response['avatarUrl'], str)
+    assert isinstance(response['publicProfile'], bool)
+    assert isinstance(response['defaultLang'], str)
+    assert isinstance(response['supporterLength'], int)
+
     assert response['username'] == 'CodeMyst'
     assert response['contributor'] == True
     assert response['_id'] == 'bcfu7961'

@@ -2,14 +2,14 @@ import requests
 
 
 class User:
-    def __init__(self):
-        self.data = None
+    def __init__(self, data=None):
+        self.data = data
 
     @classmethod
-    def get_from_username(cls, username: str) -> dict:
+    def get_from_username(cls, username: str):
         response = requests.get(f'https://paste.myst.rs/api/v2/user/{username}')
 
-        return response.json()
+        return cls(response.json())
 
     @classmethod
     def user_exist(cls, username: str) -> bool:
