@@ -16,14 +16,6 @@ def test_get_from_name() -> None:
     assert isinstance(response['defaultLang'], str)
     assert isinstance(response['supporterLength'], int)
 
-    assert response['username'] == 'CodeMyst'
-    assert response['contributor'] == True
-    assert response['_id'] == 'bcfu7961'
-    assert response['avatarUrl'] == 'https://avatars3.githubusercontent.com/u/7966628?v=4'
-    assert response['publicProfile'] == True
-    assert response['defaultLang'] == 'D'
-    assert response['supporterLength'] == 0
-
 
 def test_user_exists() -> None:
     response_first = User.user_exist('YeffyCodeGit')
