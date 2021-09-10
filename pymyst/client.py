@@ -1,22 +1,23 @@
 import requests
 
 
-def get(endpoint: str, auth: str = None) -> str:
+def get(endpoint: str, auth: str = None) -> dict:
     headers = {}
 
     if auth is not None:
         headers['Authorization'] = auth
 
-    return requests.get(endpoint, headers=headers).text
+    return requests.get(endpoint, headers=headers).json()
 
 
-def post(data: str, endpoint: str, auth: str = None, content_type: str='application/json') -> str:
+def post(data: str, endpoint: str, auth: str = None, content_type: str = 'application/json') -> dict:
     headers = {'Content-Type': content_type}
 
     if auth is not None:
         headers['Authorization'] = auth
 
-    return requests.post(endpoint, data=data, headers=headers).text
+    return requests.post(endpoint, data=data, headers=headers).json()
+
 
 def delete():
     pass

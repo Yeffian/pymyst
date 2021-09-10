@@ -1,3 +1,4 @@
+from pymyst import client
 import requests
 
 
@@ -7,9 +8,9 @@ class User:
 
     @classmethod
     def get_from_username(cls, username: str):
-        response = requests.get(f'https://paste.myst.rs/api/v2/user/{username}')
+        response = client.get(f'https://paste.myst.rs/api/v2/user/{username}')
 
-        return cls(response.json())
+        return cls(response)
 
     @classmethod
     def user_exist(cls, username: str) -> bool:
