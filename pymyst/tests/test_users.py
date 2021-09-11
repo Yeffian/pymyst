@@ -1,7 +1,7 @@
 from pymyst.types.User import User
 
 
-def test_get_from_name() -> None:
+def test_get_from_name():
     user = User.get_from_username('CodeMyst')
 
     response = user.data
@@ -17,7 +17,7 @@ def test_get_from_name() -> None:
     assert isinstance(response['supporterLength'], int)
 
 
-def test_user_exists() -> None:
+def test_user_exists():
     response_first = User.user_exist('YeffyCodeGit')
     response_second = User.user_exist('uwhuihf')
 

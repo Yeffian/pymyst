@@ -1,7 +1,7 @@
 import requests
 
 
-def get(endpoint: str, auth: str = None) -> dict:
+def get(endpoint: str, auth: str = None):
     headers = {}
 
     if auth is not None:
@@ -10,7 +10,7 @@ def get(endpoint: str, auth: str = None) -> dict:
     return requests.get(endpoint, headers=headers).json()
 
 
-def post(data: str, endpoint: str, auth: str = None, content_type: str = 'application/json') -> dict:
+def post(data: str, endpoint: str, auth: str = None, content_type: str = 'application/json'):
     headers = {'Content-Type': content_type}
 
     if auth is not None:

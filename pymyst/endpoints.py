@@ -7,9 +7,9 @@ endpoints = {
 }
 
 
-def create_url(key: str) -> str:
+def create_url(key: str):
     return endpoints['base'] + key
 
 
-def get_endpoint(key: str) -> str:
+def get_endpoint(key: str):
     return create_url(endpoints[key])
