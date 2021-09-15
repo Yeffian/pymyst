@@ -1,13 +1,17 @@
 import json
 from pymyst.types.User import User
+import os
 
 
 def load_config():
-    return json.load(open('data.json'))
+    curr_path = os.path.dirname(os.path.abspath(__file__))
+    config = os.path.join(curr_path, 'data.json')
+    return json.load(open(config))
 
 
 def test_get_from_user_token():
-    user = User.get_from_user_token(load_config()['token'])
+    config = load_config()
+    user = User.get_from_user_token(config['token'])
 
     response = user.data
 
