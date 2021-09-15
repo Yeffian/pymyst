@@ -11,7 +11,7 @@ def get(endpoint: str, auth: str = None):
 
 
 def post(data: str, endpoint: str, auth: str = None, content_type: str = 'application/json'):
-    headers = {'Content-Type': content_type}
+    headers = { 'Content-Type': content_type }
 
     if auth is not None:
         headers['Authorization'] = auth

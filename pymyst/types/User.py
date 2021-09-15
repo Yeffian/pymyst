@@ -21,3 +21,8 @@ class User:
         else:
             return False
 
+    @classmethod
+    def get_from_user_token(cls, token):
+        response = client.get(f'https://paste.myst.rs/api/v2/user/self', token)
+
+        return cls(response)
