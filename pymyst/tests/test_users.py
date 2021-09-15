@@ -20,7 +20,6 @@ def test_get_from_user_token():
     assert isinstance(response['publicProfile'], bool)
     assert isinstance(response['defaultLang'], str)
     assert isinstance(response['supporterLength'], int)
-
     assert isinstance(response['stars'], list)
     assert isinstance(response['serviceIds'], dict)
 
