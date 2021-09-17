@@ -1,6 +1,7 @@
 import json
 from pymyst.types.User import User
 import os
+import pytest
 
 
 def load_config():
@@ -13,35 +14,28 @@ def test_get_from_user_token():
     config = load_config()
     user = User.get_from_user_token(config['token'])
 
-    response = user.data
+    validate_user_data(user.data)
 
-    assert isinstance(response, dict)
-
-    assert isinstance(response['username'], str)
-    assert isinstance(response['contributor'], bool)
-    assert isinstance(response['_id'], str)
-    assert isinstance(response['avatarUrl'], str)
-    assert isinstance(response['publicProfile'], bool)
-    assert isinstance(response['defaultLang'], str)
-    assert isinstance(response['supporterLength'], int)
-    assert isinstance(response['stars'], list)
-    assert isinstance(response['serviceIds'], dict)
+    assert isinstance(user.data['stars'], list)
+    assert isinstance(user.data['serviceIds'], dict)
 
 
 def test_get_from_name():
     user = User.get_from_username('CodeMyst')
 
-    response = user.data
+    validate_user_data(user.data)
 
-    assert isinstance(response, dict)
 
-    assert isinstance(response['username'], str)
-    assert isinstance(response['contributor'], bool)
-    assert isinstance(response['_id'], str)
-    assert isinstance(response['avatarUrl'], str)
-    assert isinstance(response['publicProfile'], bool)
-    assert isinstance(response['defaultLang'], str)
-    assert isinstance(response['supporterLength'], int)
+def validate_user_data(data):
+    assert isinstance(data, dict)
+
+    assert isinstance(data['username'], str)
+    assert isinstance(data['contributor'], bool)
+    assert isinstance(data['_id'], str)
+    assert isinstance(data['avatarUrl'], str)
+    assert isinstance(data['publicProfile'], bool)
+    assert isinstance(data['defaultLang'], str)
+    assert isinstance(data['supporterLength'], int)
 
 
 def test_user_exists():
