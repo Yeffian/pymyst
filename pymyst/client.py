@@ -7,7 +7,7 @@ def get(endpoint, auth=None):
     if auth is not None:
         headers['Authorization'] = auth
 
-    return requests.get(endpoint, headers=headers).json()
+    return requests.get(endpoint, headers=headers)
 
 
 def post(data, endpoint, auth, content_type='application/json'):

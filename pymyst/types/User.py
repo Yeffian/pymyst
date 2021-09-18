@@ -12,10 +12,10 @@ class User:
     def get_from_username(cls, username):
         response = client.get(f'https://paste.myst.rs/api/v2/user/{username}')
 
-        if response.status_code == 404:
+        if not User.user_exist(username):
             raise UserNotFoundException("Unable to get user.")
 
-        return cls(response)
+        return cls(response.json())
 
     @classmethod
     def user_exist(cls, username):
@@ -33,4 +33,4 @@ class User:
         if response.status_code == 404:
             raise UserNotFoundException("Unable to get user.")
 
-        return cls(response)
+        return cls(response.json())
