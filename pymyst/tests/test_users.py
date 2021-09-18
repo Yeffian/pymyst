@@ -23,6 +23,7 @@ def test_get_from_user_token():
 def test_get_from_name():
     user = User.get_from_username('CodeMyst')
 
+
     validate_user_data(user.data)
 
 
