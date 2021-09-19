@@ -19,7 +19,7 @@ class User:
 
     @classmethod
     def user_exist(cls, username):
-        response = requests.get(f'https://paste.myst.rs/api/v2/user/{username}/exists')
+        response = client.get(f'https://paste.myst.rs/api/v2/user/{username}/exists')
 
         if response.status_code == 200:
             return True
