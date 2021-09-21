@@ -1,6 +1,8 @@
 from pymyst import client
 import requests
 
+from pymyst.exceptions.UserNotFound import UserNotFoundException
+
 
 class User:
     def __init__(self, data=None):
@@ -14,11 +16,14 @@ class User:
     def get_from_username(cls, username):
         response = client.get(f'https://paste.myst.rs/api/v2/user/{username}')
 
-        return cls(response)
+        if not User.user_exist(username):
+            raise UserNotFoundException("Unable to get user.")
+
+        return cls(response.json())
 
     @classmethod
     def user_exist(cls, username):
-        response = requests.get(f'https://paste.myst.rs/api/v2/user/{username}/exists')
+        response = client.get(f'https://paste.myst.rs/api/v2/user/{username}/exists')
 
         if response.status_code == 200:
             return True
@@ -29,4 +34,7 @@ class User:
     def get_from_user_token(cls, token):
         response = client.get(f'https://paste.myst.rs/api/v2/user/self', token)
 
-        return cls(response)
+        if response.status_code == 404:
+            raise UserNotFoundException("Unable to get user.")
+
+        return cls(response.json())
