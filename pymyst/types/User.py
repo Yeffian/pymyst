@@ -6,6 +6,10 @@ class User:
     def __init__(self, data=None):
         self.data = data
 
+    def __repr__(self):
+        rep = 'User(' + self.data['username'] + ')'
+        return rep
+
     @classmethod
     def get_from_username(cls, username):
         response = client.get(f'https://paste.myst.rs/api/v2/user/{username}')
