@@ -1,5 +1,4 @@
 from pymyst import client
-import requests
 
 from pymyst.exceptions.UserNotFound import UserNotFoundException
 
@@ -9,7 +8,7 @@ class User:
         self.data = data
 
     def __repr__(self):
-        rep = 'User(' + self.data['username'] + ')'
+        rep = f'User(' + self.data['username'] + ')'
         return rep
 
     @classmethod
