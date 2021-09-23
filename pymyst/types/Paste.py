@@ -7,8 +7,8 @@ class Paste:
         self.data = data
 
     @classmethod
-    def get_from_id(cls, id):
-        response = client.get(f'https://paste.myst.rs/api/v2/paste/{id}')
+    def get_from_id(cls, id, token=None):
+        response = client.get(f'https://paste.myst.rs/api/v2/paste/{id}', token)
 
         if response.status_code != 200:
             raise PasteNotFoundException('Unable to get paste.')
