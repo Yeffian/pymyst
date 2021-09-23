@@ -1,4 +1,5 @@
 from pymyst import client
+from pymyst.exceptions.PasteNotFound import PasteNotFoundException
 
 
 class Paste:
@@ -10,8 +11,6 @@ class Paste:
         response = client.get(f'https://paste.myst.rs/api/v2/paste/{id}')
 
         if response.status_code != 200:
-            pass
-            # raise PasteNotFoundException()
+            raise PasteNotFoundException('Unable to get paste.')
 
         return cls(response.json())
-    
