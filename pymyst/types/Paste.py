@@ -1,3 +1,5 @@
+import json
+
 from pymyst import client
 from pymyst.exceptions.PasteNotFound import PasteNotFoundException
 
