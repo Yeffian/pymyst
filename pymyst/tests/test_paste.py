@@ -1,26 +1,15 @@
 import json
 import os
 from os import path
+from pymyst import token
 
 from pymyst.types.Paste import Paste
-
-
-def load_config():
-    curr_path = os.path.dirname(os.path.abspath(__file__))
-    config = os.path.join(curr_path, 'data.json')
-
-    if path.exists(config):
-        return json.load(open(config))
-
-    raise Exception('No data.json file, please create a data.json containing your pastemyst token.')
 
 
 def test_get_from_id():
     paste = Paste.get_from_id('nss2i2u6')
 
-    config = load_config()
-
-    other_paste = Paste.get_from_id('23tql1g1', config['token'])
+    other_paste = Paste.get_from_id('23tql1g1', token.API_TOKEN)
 
     data = paste.data
 

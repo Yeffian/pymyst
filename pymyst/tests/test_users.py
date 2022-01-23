@@ -2,17 +2,11 @@ import json
 from pymyst.types.User import User
 import os
 import pytest
-
-
-def load_config():
-    curr_path = os.path.dirname(os.path.abspath(__file__))
-    config = os.path.join(curr_path, 'data.json')
-    return json.load(open(config))
+from pymyst import token
 
 
 def test_get_from_user_token():
-    config = load_config()
-    user = User.get_from_user_token(config['token'])
+    user = User.get_from_user_token(token.API_TOKEN)
 
     validate_user_data(user.data)
 

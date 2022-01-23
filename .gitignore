@@ -1,12 +1,12 @@
 # Testing file, not a part of the lib
 main.py
 
-# Config file containing senstive data needed for unit tests
-pymyst/tests/data.json
-
 # IDE generated files
 .idea/
 .vscode/
+
+# Private API token file
+token.py
 
 # Python generated dirs and virtual env dirs
 __pycache__/
