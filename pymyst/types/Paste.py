@@ -5,8 +5,9 @@ from pymyst.exceptions.PasteNotFound import PasteNotFoundException
 
 
 class Paste:
-    def __init__(self, data=None):
+    def __init__(self, data):
         self.data = data
+
 
     @classmethod
     def get_from_id(cls, id, token=None):
