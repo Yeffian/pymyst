@@ -38,7 +38,6 @@ class Paste:
         response = client.post(json.dumps(payload), 'https://paste.myst.rs/api/v2/paste/', token)
 
         if response.status_code != 200:
-            print(json.dumps(payload))
-            raise PasteNotCreatedException(f'could not create paste sucessfully. because {response.reason}')
+            raise PasteNotCreatedException(f'could not create paste sucessfully. error {response.reason}')
 
         return cls(response.json())
