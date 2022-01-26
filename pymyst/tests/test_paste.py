@@ -2,6 +2,8 @@ import json
 import os
 from os import path
 from pymyst import token
+from pymyst.types.CreatePaste import CreatePaste, ExpiresIn
+from pymyst.types.CreatePasty import CreatePasty
 
 from pymyst.types.Paste import Paste
 
@@ -42,3 +44,22 @@ def test_get_from_id():
     assert isinstance(other_data['tags'], list)
     assert isinstance(other_data['pasties'], list)
     assert isinstance(other_data['edits'], list)
+
+
+def test_create_paste():
+    paste = Paste.create_paste(
+        CreatePaste(
+            'test',
+            [CreatePasty('Python', code="""
+            def main():
+                print('hello')
+                
+            main()
+            """)],
+            tags=['python', 'code'],
+            expires_in=ExpiresIn.ONE_YEAR,
+        ),
+        token.API_TOKEN
+    )
+
+    assert paste.data is not None

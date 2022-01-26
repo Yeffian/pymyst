@@ -6,3 +6,10 @@ class CreatePasty:
         self.language = language
         self.code = code
         self.title = title
+
+    def to_json(self):
+        return {
+            'language': self.language,
+            'title': self.title,
+            'code': self.code
+        }

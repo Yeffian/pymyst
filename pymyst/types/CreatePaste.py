@@ -24,4 +24,10 @@ class CreatePaste:
         self.is_public = is_public
         self.is_private = is_private
 
-
+    def __iter__(self):
+        yield 'title', self.title
+        yield 'pasties', self.pasties
+        yield 'tags', self.tags
+        yield 'expiresIn', self.expires_in
+        yield 'isPublic', self.is_public
+        yield 'isPrivate', self.is_private
