@@ -11,11 +11,6 @@ class ExpiresIn:
 
 class CreatePaste:
     def __init__(self, title='untitled', pasties=None, tags=None, expires_in=ExpiresIn.NEVER, is_public=True, is_private=False):
-        if pasties is None:
-            raise TypeError('at least one pasty required to create a paste')
-
-        if tags is None:
-            self.tags = []
 
         self.title = title
         self.pasties = pasties

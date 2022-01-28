@@ -21,6 +21,8 @@ class Paste:
 
     @classmethod
     def create_paste(cls, create_paste_info, token=None):
+        if not create_paste_info.pasties:
+            raise TypeError("Pasties required to make new paste.")
         pasties_json = []
 
         for pasty in create_paste_info.pasties:
