@@ -30,8 +30,8 @@ class Paste:
         payload = {
             'title': create_paste_info.title,
             'expiresIn': create_paste_info.expires_in,
-            'isPrivate': create_paste_info.is_private if token else '',
-            'isPublic': create_paste_info.is_public if token else '',
+            'isPrivate': create_paste_info.is_private,
+            'isPublic': create_paste_info.is_public,
             'tags': ','.join(create_paste_info.tags),
             'pasties': pasties_json
         }
