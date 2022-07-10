@@ -19,11 +19,12 @@ def post(data, endpoint, auth=None, content_type='application/json'):
     return requests.post(endpoint, data=data, headers=headers)
 
 
-def delete():
-    pass
-    # TODO: Add delete requests
+def delete(endpoint, auth):
+    # deleting things always requires the authorization header so its not optional
+    headers = {'Authorization': auth}
+
+    return requests.delete(endpoint, headers=headers)
 
 
 def patch():
-    pass
-    # TODO: Add patch requests
+    
