@@ -26,5 +26,8 @@ def delete(endpoint, auth):
     return requests.delete(endpoint, headers=headers)
 
 
-def patch():
-    
+def patch(endpoint, data, auth, content_type='application/json'):
+    # patching things always requires the authorization header so its not optional
+    headers = {'Content-Type': content_type, 'Authorization': auth}
+
+    return requests.patch(endpoint, data, headers=headers)
