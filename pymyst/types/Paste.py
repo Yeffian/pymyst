@@ -22,6 +22,7 @@ class Paste:
     def create_paste(cls, create_paste_info, token=None):
         if not create_paste_info.pasties:
             raise TypeError("Pasties required to make new paste.")
+
         pasties_json = []
 
         for pasty in create_paste_info.pasties:
@@ -42,3 +43,8 @@ class Paste:
             raise PasteNotCreatedException(f'could not create paste sucessfully. error {response.reason}')
 
         return cls(response.json())
+
+    @classmethod
+    def delete_paste(cls, paste_id, token=None):
+        response = client.delete(f'https://paste.myst.rs/api/v2/paste/{paste_id}', token)
+

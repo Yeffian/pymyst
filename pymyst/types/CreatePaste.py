@@ -9,8 +9,10 @@ class ExpiresIn:
     ONE_YEAR = '1y'
     NEVER = 'never'
 
+
 class CreatePaste:
-    def __init__(self, title='untitled', pasties=None, tags=None, expires_in=ExpiresIn.NEVER, is_public=True, is_private=False):
+    def __init__(self, title='untitled', pasties=None, tags=None, expires_in=ExpiresIn.NEVER, is_public=True,
+                 is_private=False):
         self.title = title
         self.pasties = pasties
         self.tags = tags
