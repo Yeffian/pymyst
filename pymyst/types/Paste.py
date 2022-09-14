@@ -47,4 +47,3 @@ class Paste:
     @classmethod
     def delete_paste(cls, paste_id, token=None):
         response = client.delete(f'https://paste.myst.rs/api/v2/paste/{paste_id}', token)
-
