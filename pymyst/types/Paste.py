@@ -47,3 +47,6 @@ class Paste:
     @classmethod
     def delete_paste(cls, paste_id, token=None):
         response = client.delete(f'https://paste.myst.rs/api/v2/paste/{paste_id}', token)
+
+        if response.status_code != 200:
+            raise PasteNotDeletedException(f'could not delete paste sucessfully. error {response.reason}')
