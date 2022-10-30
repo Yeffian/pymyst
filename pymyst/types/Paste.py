@@ -49,4 +49,16 @@ class Paste:
         response = client.delete(f'https://paste.myst.rs/api/v2/paste/{paste_id}', token)
 
         if response.status_code != 200:
-            raise PasteNotDeletedException(f'could not delete paste sucessfully. error {response.reason}')
+            raise PasteNotDeletedException(f'could not delete paste sucessfully. error {response.reason}'
+
+    @classmethod
+    def edit_paste(cls, paste_id, edit, token=None):
+        payload = edit.to_json()
+        response = client.patch(f'https://paste.myst.rs/api/v2/paste/{paste_id}', json.dumps(payload), token)
+
+        print(payload)
+        print(response.status_code)
+        print(f'https://paste.myst.rs/api/v2/paste/{paste_id}')
+
+        if response.status_code != 200:
+            raise PasteNotEditedException(f'could not edit paste sucessfully. error {response.reason}')
