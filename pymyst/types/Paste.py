@@ -3,6 +3,8 @@ import json
 from pymyst import client
 from pymyst.exceptions.PasteNotCreated import PasteNotCreatedException
 from pymyst.exceptions.PasteNotFound import PasteNotFoundException
+from pymyst.exceptions.PasteNotDeleted import PasteNotDeletedException
+from pymyst.exceptions.PasteNotEdited import PasteNotEditedException
 
 
 class Paste:
@@ -40,7 +42,7 @@ class Paste:
         response = client.post(json.dumps(payload), 'https://paste.myst.rs/api/v2/paste/', token)
 
         if response.status_code != 200:
-            raise PasteNotCreatedException(f'could not create paste sucessfully. error {response.reason}')
+            raise PasteNotCreatedException(f'could not create paste successfully. error {response.reason}')
 
         return cls(response.json())
 
@@ -49,7 +51,7 @@ class Paste:
         response = client.delete(f'https://paste.myst.rs/api/v2/paste/{paste_id}', token)
 
         if response.status_code != 200:
-            raise PasteNotDeletedException(f'could not delete paste sucessfully. error {response.reason}'
+            raise PasteNotDeletedException(f'could not delete paste successfully. error {response.reason}')
 
     @classmethod
     def edit_paste(cls, paste_id, edit, token=None):
@@ -61,4 +63,4 @@ class Paste:
         print(f'https://paste.myst.rs/api/v2/paste/{paste_id}')
 
         if response.status_code != 200:
-            raise PasteNotEditedException(f'could not edit paste sucessfully. error {response.reason}')
+            raise PasteNotEditedException(f'could not edit paste successfully. error {response.reason}')
